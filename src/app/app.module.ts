@@ -5,7 +5,13 @@ import { AppComponent } from './app.component';
 import { TextComponent } from './components/tools/text/text.component';
 import { ElementsListComponent } from './components/sidebars/elements-list/elements-list.component';
 import { PageComponent } from './components/page/page.component';
-import { ElementPreferencesComponent } from './components/sidebars/element-preferences/element-preferences.component';
+import { ElementStyleComponent } from './components/sidebars/element-style/element-style.component';
+import { DraggableDirective } from './directive/draggable.directive';
+import { TableComponent } from './components/tools/table/table.component';
+import { LineComponent } from './components/tools/line/line.component';
+import { InputComponent } from './components/tools/input/input.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -13,10 +19,16 @@ import { ElementPreferencesComponent } from './components/sidebars/element-prefe
     TextComponent,
     ElementsListComponent,
     PageComponent,
-    ElementPreferencesComponent
+    ElementStyleComponent,
+    DraggableDirective,
+    TableComponent,
+    LineComponent,
+    InputComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,7 +1,10 @@
 import { Component, ViewChild, ViewContainerRef } from '@angular/core';
 import { TextComponent } from '../../tools/text/text.component';
-import { ElementGenerateService } from 'src/app/services/element-generate.service';
+import { ElementService } from 'src/app/services/element.service';
 import { ComponentConfig } from '../../models/interfaces/component-config';
+import { LineComponent } from '../../tools/line/line.component';
+import { InputComponent } from '../../tools/input/input.component';
+import { TableComponent } from '../../tools/table/table.component';
 
 @Component({
   selector: 'app-elements-list',
@@ -10,15 +13,17 @@ import { ComponentConfig } from '../../models/interfaces/component-config';
 })
 export class ElementsListComponent {
   
-  constructor (private elementGenerateService: ElementGenerateService) { }
+  constructor (private elementGenerateService: ElementService) { }
 
   components = 
   [
     { label: 'Text', type: TextComponent },
+    { label: 'Line', type: LineComponent },
+    { label: 'Input', type: InputComponent },
+    { label: 'Table', type: TableComponent },
   ]
 
-
   createComponent(component: ComponentConfig) {
-    this.elementGenerateService.emit(component);
+    this.elementGenerateService.emitComponentChange(component);
   }
 }

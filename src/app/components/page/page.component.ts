@@ -1,5 +1,5 @@
 import { Component, ComponentRef, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
-import { ElementGenerateService } from 'src/app/services/element-generate.service';
+import { ElementService } from 'src/app/services/element.service';
 
 @Component({
   selector: 'app-page',
@@ -8,18 +8,17 @@ import { ElementGenerateService } from 'src/app/services/element-generate.servic
 })
 export class PageComponent implements OnInit {
   
-  constructor (private elementGenerateService: ElementGenerateService) { }
-  counter: number = 0;
+  constructor (private elementGenerateService: ElementService) { }
   
   @ViewChild('dynamicContainer', { read: ViewContainerRef, static: true })
-  container!: ViewContainerRef;
+  container?: ViewContainerRef;
 
   ngOnInit(): void {
     this.elementGenerateService.componentChange$.subscribe( component => {
-      const containerRef = this.container.createComponent(component.type) as ComponentRef<typeof component.type>;
-      this.counter++;
-      if (containerRef)
-        containerRef.instance.data = this.counter.toString();
+      if (this.container == null)
+        return;
+
+      this.elementGenerateService.createElement(this.container, component);
     });
   }
 

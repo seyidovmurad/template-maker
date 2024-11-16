@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="d-flex">
+        <ul>
+            <li *ngFor="let style of styles">
+                <div>
+                    <label for="">{{style.label}}</label>
+                    <input type="text" name="value" [(ngModel)]="style.value" (blur)="onChange(style)"/>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
