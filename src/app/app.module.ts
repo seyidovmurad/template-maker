@@ -12,6 +12,7 @@ import { LineComponent } from './components/tools/line/line.component';
 import { InputComponent } from './components/tools/input/input.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { ElementModelsComponent } from './components/sidebars/element-models/element-models.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { FormsModule } from '@angular/forms';
     DraggableDirective,
     TableComponent,
     LineComponent,
-    InputComponent
+    InputComponent,
+    ElementModelsComponent
   ],
   imports: [
     BrowserModule,

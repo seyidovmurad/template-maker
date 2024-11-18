@@ -1,9 +1,9 @@
 import { ComponentRef, Injectable, Renderer2, RendererFactory2, Type, ViewContainerRef } from '@angular/core';
 import { Subject } from 'rxjs';
-import { ComponentConfig } from '../components/models/interfaces/component-config';
-import { Element } from '../components/models/interfaces/element';
+import { ComponentConfig } from '../models/interfaces/component-config';
+import { Element } from '../models/interfaces/element';
 import { ComponentRefWrapper } from '../wrappers/component-ref-wrapper';
-import { Style } from '../components/models/interfaces/style';
+import { Style } from '../models/interfaces/style';
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +33,7 @@ export class ElementService {
     toolElement.addEventListener('mousedown', () => this.select(componentRef));
     
     const element = toolElement.querySelector('.element');
+    const cmp = toolElement.querySelector('.component');
 
     this.select(componentRef);
 
@@ -40,7 +41,10 @@ export class ElementService {
 
     if (styles) {
       for(const style of styles) {
-        this.renderer.setStyle(element, style.name, style.value); 
+        if (style.name == 'zIndex')
+          this.renderer.setStyle(cmp, style.name, style.value);
+        else
+          this.renderer.setStyle(element, style.name, style.value); 
       }
     }
 
@@ -89,9 +93,12 @@ export class ElementService {
   changeStyle(style: Style) {
     if (!this.selectedComponentRef)
       return;
-    console.log(style);
-    const element = ((this.selectedComponentRef.hostView as any).rootNodes[0] as HTMLElement).querySelector('.element');
 
+    const instance = this.selectedComponentRef.instance as Element;
+    const className = style.name === 'zIndex' ? '.component' : '.element';
+    const element = ((this.selectedComponentRef.hostView as any).rootNodes[0] as HTMLElement).querySelector(className);
+
+    instance.updateStyle(style);
     this.renderer.setStyle(element, style.name, style.value);
   }
 }

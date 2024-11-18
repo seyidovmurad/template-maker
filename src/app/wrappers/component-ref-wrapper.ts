@@ -1,6 +1,6 @@
 import { ComponentRef } from "@angular/core";
-import { Element } from '../components/models/interfaces/element';
-import { Style } from "../components/models/interfaces/style";
+import { Element } from '../models/interfaces/element';
+import { Style } from "../models/interfaces/style";
 
 export class ComponentRefWrapper<T> {
   constructor(private componentRef: ComponentRef<T>) {}

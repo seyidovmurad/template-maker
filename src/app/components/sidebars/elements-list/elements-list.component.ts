@@ -1,7 +1,7 @@
 import { Component, ViewChild, ViewContainerRef } from '@angular/core';
 import { TextComponent } from '../../tools/text/text.component';
 import { ElementService } from 'src/app/services/element.service';
-import { ComponentConfig } from '../../models/interfaces/component-config';
+import { ComponentConfig } from '../../../models/interfaces/component-config';
 import { LineComponent } from '../../tools/line/line.component';
 import { InputComponent } from '../../tools/input/input.component';
 import { TableComponent } from '../../tools/table/table.component';

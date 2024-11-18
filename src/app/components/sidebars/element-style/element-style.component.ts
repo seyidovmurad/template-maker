@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ElementService } from 'src/app/services/element.service';
-import { Style } from '../../models/interfaces/style';
+import { Style } from '../../../models/interfaces/style';
 
 @Component({
   selector: 'app-element-style',

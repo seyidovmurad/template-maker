@@ -17,7 +17,7 @@ export class PageComponent implements OnInit {
     this.elementGenerateService.componentChange$.subscribe( component => {
       if (this.container == null)
         return;
-
+      console.log(this.container);
       this.elementGenerateService.createElement(this.container, component);
     });
   }
